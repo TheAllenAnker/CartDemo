@@ -26,6 +26,10 @@
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>com.shadder.cart.servlet.CartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <servlet-class>com.shadder.cart.servlet.FavoriteServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
@@ -55,7 +59,18 @@
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cart/check.do</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <url-pattern>/favorite/favorite.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <url-pattern>/favorite/delete.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <url-pattern>/favorite/list.do</url-pattern>
+    </servlet-mapping>
 
     <error-page>
         <error-code>404</error-code>

@@ -30,13 +30,19 @@ public class CartServlet extends HttpServlet {
             request.setAttribute("carts", LocalCache.getCartItems());
             request.getRequestDispatcher("/WEB-INF/views/business/cart.jsp").forward(request, response);
         } else if (Objects.equals("/cart/increment.do", request.getServletPath())) {
-            LocalCache.incrementCartItem(Long.valueOf(productId));
+            if (productId != null) {
+                LocalCache.incrementCartItem(Long.valueOf(productId));
+            }
             response.sendRedirect("/cart/list.do");
         } else if (Objects.equals("/cart/decrement.do", request.getServletPath())) {
-            LocalCache.decrementCartItem(Long.valueOf(productId));
+            if (productId != null) {
+                LocalCache.decrementCartItem(Long.valueOf(productId));
+            }
             response.sendRedirect("/cart/list.do");
         } else if (Objects.equals("/cart/delete.do", request.getServletPath())) {
-            LocalCache.removeCartItem(Long.valueOf(productId));
+            if (productId != null) {
+                LocalCache.removeCartItem(Long.valueOf(productId));
+            }
             response.sendRedirect("/cart/list.do");
         } else if (Objects.equals("/cart/check.do", request.getServletPath())) {
             String[] carts = request.getParameterValues("carts");
