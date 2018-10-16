@@ -47,6 +47,10 @@ public class LocalCache {
         return new ArrayList<>(productMap.values());
     }
 
+    public static int getProductSize() {
+        return productMap.size();
+    }
+
     public static Product getProduct(Long productId) {
         return productMap.get(productId);
     }
@@ -91,7 +95,7 @@ public class LocalCache {
         favoriteMap.remove(productId);
     }
 
-    public static ArrayList<Product> getFavorites() {
+    public static List<Product> getFavorites() {
         return new ArrayList<>(favoriteMap.values());
     }
 
@@ -103,7 +107,13 @@ public class LocalCache {
         browseListMap.remove(productId);
     }
 
-    public static ArrayList<Product> getBrowseProducts() {
+    public static List<Product> getBrowseProducts() {
         return new ArrayList<>(browseListMap.values());
+    }
+
+    public static List<Product> getPageProducts(int page, int size) {
+        int start = (page - 1) * size;
+        int end = Math.min(page * size, productMap.size());
+        return getProducts().subList(start, end);
     }
 }
