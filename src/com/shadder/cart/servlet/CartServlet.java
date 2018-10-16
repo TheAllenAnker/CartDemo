@@ -1,5 +1,6 @@
 package com.shadder.cart.servlet;
 
+import com.shadder.cart.data.CartItem;
 import com.shadder.cart.data.LocalCache;
 import com.shadder.cart.data.Product;
 
@@ -37,6 +38,16 @@ public class CartServlet extends HttpServlet {
         } else if (Objects.equals("/cart/delete.do", request.getServletPath())) {
             LocalCache.removeCartItem(Long.valueOf(productId));
             response.sendRedirect("/cart/list.do");
+        } else if (Objects.equals("/cart/check.do", request.getServletPath())) {
+            String[] carts = request.getParameterValues("carts");
+            int totalPrice = 0;
+            for (String cart : carts) {
+                CartItem cartItem = LocalCache.getCartItem(Long.valueOf(cart));
+                totalPrice += cartItem.getTotalPrice();
+                LocalCache.removeCartItem(Long.valueOf(cart));
+            }
+            request.setAttribute("totalPrice", totalPrice);
+            request.getRequestDispatcher("/WEB-INF/views/business/check.jsp").forward(request, response);
         }
     }
 }
