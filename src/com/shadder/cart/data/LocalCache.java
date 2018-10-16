@@ -9,6 +9,8 @@ public class LocalCache {
 
     private static Map<Long, Product> productMap = new HashMap<>();
 
+    private static Map<Long, CartItem> cartMap = new HashMap<>();
+
     static {
         productMap.put(1l, new Product(1l, "HTML/CSS", "HTML+CSS基础课程", "HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义", "初级", 219));
         productMap.put(2l, new Product(2l, "HTML/CSS", "HTML+CSS基础课程", "HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义", "初级", 219));
@@ -39,5 +41,41 @@ public class LocalCache {
 
     public static List<Product> getProducts() {
         return new ArrayList<>(productMap.values());
+    }
+
+    public static Product getProduct(Long productId) {
+        return productMap.get(productId);
+    }
+
+    public static List<CartItem> getCartItems() {
+        return new ArrayList<>(cartMap.values());
+    }
+
+    public static CartItem getCartItem(Long productId) {
+        return cartMap.get(productId);
+    }
+
+    public static void addCartItem(Product product) {
+        if (!cartMap.containsKey(product.getId())) {
+            cartMap.put(product.getId(), new CartItem(product.getId(), product.getId(), product.getName(),
+                    product.getPrice(), 1, product.getPrice()));
+        } else {
+            cartMap.get(product.getId()).incrementCount();
+        }
+    }
+
+    public static void incrementCartItem(Long cartId) {
+        cartMap.get(cartId).incrementCount();
+    }
+
+    public static void decrementCartItem(Long cartId) {
+        boolean result = cartMap.get(cartId).decrementCount();
+        if (result) {
+            cartMap.remove(cartId);
+        }
+    }
+
+    public static void removeCartItem(Long productId) {
+        cartMap.remove(productId);
     }
 }

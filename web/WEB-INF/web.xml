@@ -22,10 +22,34 @@
         <servlet-name>ProductServlet</servlet-name>
         <servlet-class>com.shadder.cart.servlet.ProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.shadder.cart.servlet.CartServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
         <url-pattern>/product/list.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/cart.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/list.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/increment.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/decrement.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/delete.do</url-pattern>
     </servlet-mapping>
 
 
