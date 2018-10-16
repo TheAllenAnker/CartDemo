@@ -116,4 +116,23 @@ public class LocalCache {
         int end = Math.min(page * size, productMap.size());
         return getProducts().subList(start, end);
     }
+
+    public static List<Product> getPageProducts(int page, int size, List<Product> products) {
+        int start = (page - 1) * size;
+        int end = Math.min(page * size, products.size());
+        return products.subList(start, end);
+    }
+
+    public static List<Product> getSearchProducts(String keyword) {
+        List<Product> resultProduct = new ArrayList<>();
+        if (keyword != null && !keyword.equals("")) {
+            productMap.values().forEach(product -> {
+                if (product.getName().contains(keyword)) {
+                    resultProduct.add(product);
+                }
+            });
+        }
+
+        return resultProduct;
+    }
 }

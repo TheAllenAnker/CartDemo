@@ -55,7 +55,7 @@
         <a href="/browse/list.do" class="profile__item profile__message"></a>
         <a href="" class="profile__item profile__ava"></a>
     </div>
-    <form id="searchForm" method="post" action="/product/list.do">
+    <form id="searchForm" method="post" action="/product/search_list.do">
         <div class="search">
             <input type="hidden" name="page" value="1">
             <input type="text" name="title" class="search_input" value="${title}">
