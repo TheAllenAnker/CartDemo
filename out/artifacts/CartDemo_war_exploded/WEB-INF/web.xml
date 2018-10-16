@@ -30,6 +30,14 @@
         <servlet-name>FavoriteServlet</servlet-name>
         <servlet-class>com.shadder.cart.servlet.FavoriteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailInfoServlet</servlet-name>
+        <servlet-class>com.shadder.cart.servlet.DetailInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BrowseListServlet</servlet-name>
+        <servlet-class>com.shadder.cart.servlet.BrowseListServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
@@ -70,6 +78,18 @@
     <servlet-mapping>
         <servlet-name>FavoriteServlet</servlet-name>
         <url-pattern>/favorite/list.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailInfoServlet</servlet-name>
+        <url-pattern>/detail/detail.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BrowseListServlet</servlet-name>
+        <url-pattern>/browse/list.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BrowseListServlet</servlet-name>
+        <url-pattern>/browse/delete.do</url-pattern>
     </servlet-mapping>
 
     <error-page>

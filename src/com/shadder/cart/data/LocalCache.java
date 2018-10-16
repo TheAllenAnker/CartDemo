@@ -13,6 +13,8 @@ public class LocalCache {
 
     private static Map<Long, Product> favoriteMap = new HashMap<>();
 
+    private static Map<Long, Product> browseListMap = new HashMap<>();
+
     static {
         productMap.put(1l, new Product(1l, "HTML/CSS", "HTML+CSS基础课程", "HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义", "初级", 219));
         productMap.put(2l, new Product(2l, "HTML/CSS", "HTML+CSS基础课程", "HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义", "初级", 219));
@@ -91,5 +93,17 @@ public class LocalCache {
 
     public static ArrayList<Product> getFavorites() {
         return new ArrayList<>(favoriteMap.values());
+    }
+
+    public static void addBrowseProduct(Long productId) {
+        browseListMap.put(productId, getProduct(productId));
+    }
+
+    public static void delBrowseProduct(Long productId) {
+        browseListMap.remove(productId);
+    }
+
+    public static ArrayList<Product> getBrowseProducts() {
+        return new ArrayList<>(browseListMap.values());
     }
 }
